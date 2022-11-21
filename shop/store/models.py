@@ -18,3 +18,6 @@ class Item(models.Model):
         validators=[MinValueValidator(100), ],
         verbose_name='Product price in cents',
     )
+
+    def __str__(self) -> str:
+        return self.name
