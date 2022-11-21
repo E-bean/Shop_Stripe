@@ -1,0 +1,16 @@
+{% load static %}
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <h1>{{name}}</h1>
+    <p>{{description}}</p>
+    <p>Price {{price}} $</p>
+    <a href="{% url 'store:buy' item_id%}">
+      <button> Buy </button>
+    </a>
+  </body>
+</html>
+
