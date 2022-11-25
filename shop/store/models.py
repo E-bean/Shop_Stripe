@@ -19,5 +19,8 @@ class Item(models.Model):
         verbose_name='Product price in cents',
     )
 
+    def get_absolute_url(self):
+        return f'item/{self.id}/'
+
     def __str__(self) -> str:
         return self.name

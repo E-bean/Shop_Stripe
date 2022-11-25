@@ -30,6 +30,8 @@ stripe.api_key = STRIPE_SECRET_KEY
 def BuyItem(request,  *args, **kwargs):
     """View for redirect to buy on stripe"""
     item_id = kwargs.get("item_id")
+    quantity = request.POST.get('quantity')
+    print(quantity)
     item = get_object_or_404(Item, id=item_id)
     domain_url = 'http://127.0.0.1:8000/'
     session = stripe.checkout.Session.create(
@@ -41,11 +43,11 @@ def BuyItem(request,  *args, **kwargs):
                 },
                 'unit_amount': item.price,
             },
-            'quantity': 1,
+            'quantity': quantity,
         }],
         mode='payment',
         success_url=domain_url + 'success/',
-        cancel_url=domain_url + 'item/' + str(item_id),
+        cancel_url=domain_url + item.get_absolute_url(),
     )
     return redirect(session.url, code=303)
 
