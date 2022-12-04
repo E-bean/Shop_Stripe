@@ -61,5 +61,7 @@ docker exec web python manage.py createsuperuser
 ```
 
 В админ панели добавьте товар. http://localhost:8000/admin/
+
 По адресу http://localhost:8000/item/1/ можно протестировать оплату товара.
+
 Карты для тестовой оплаты https://stripe.com/docs/testing#cards.
